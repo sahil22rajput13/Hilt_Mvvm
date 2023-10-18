@@ -47,5 +47,8 @@ object RetrofitClient {
     fun provideApiService(retrofit: Retrofit): ApiServices {
         return retrofit.create(ApiServices::class.java)
     }
+    @Singleton
+    @Provides
+    fun providesRepository(apiService: ApiServices) = Repository(apiService)
 }
 
